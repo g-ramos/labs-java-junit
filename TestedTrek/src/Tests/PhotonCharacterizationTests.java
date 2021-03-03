@@ -27,7 +27,7 @@ public class PhotonCharacterizationTests {
 
     @Test
     public void NotifiedIfNoTorpedoesRemain() {
-        game.setTorpedoes(0);
+        game.setPhotonTorpedoesRemaining(0);
         context.setValueForTesting("target", new MockKlingon(2000, 200));
         game.fireWeapon(context);
         Assert.assertEquals("No more photon torpedoes! || ",
@@ -42,7 +42,7 @@ public class PhotonCharacterizationTests {
         game.fireWeapon(context);
         Assert.assertEquals("Torpedo missed Klingon at 2500 sectors... || ",
             context.getAllOutput());
-        Assert.assertEquals(7, game.getTorpedoes());
+        Assert.assertEquals(7, game.getPhotonTorpedoesRemaining());
     }
 
     @Test
@@ -52,7 +52,7 @@ public class PhotonCharacterizationTests {
         game.fireWeapon(context);
         Assert.assertEquals("Torpedo missed Klingon at 3500 sectors... || ",
             context.getAllOutput());
-        Assert.assertEquals(7, game.getTorpedoes());
+        Assert.assertEquals(7, game.getPhotonTorpedoesRemaining());
     }
 
     @Test
@@ -63,7 +63,7 @@ public class PhotonCharacterizationTests {
         game.fireWeapon(context);
         Assert.assertEquals("Photons hit Klingon at 500 sectors with 825 units || Klingon destroyed! || ",
             context.getAllOutput());
-        Assert.assertEquals(7, game.getTorpedoes());
+        Assert.assertEquals(7, game.getPhotonTorpedoesRemaining());
         Assert.assertTrue(klingon.deleteWasCalled());
 
     }
@@ -75,7 +75,7 @@ public class PhotonCharacterizationTests {
         game.fireWeapon(context);
         Assert.assertEquals("Photons hit Klingon at 500 sectors with 825 units || Klingon has 1175 remaining || ",
             context.getAllOutput());
-        Assert.assertEquals(7, game.getTorpedoes());
+        Assert.assertEquals(7, game.getPhotonTorpedoesRemaining());
     }
 
 }

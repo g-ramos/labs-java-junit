@@ -8,17 +8,17 @@ public class Game {
 	private static int MAX_RANGE = 4000;
 
 	private int remainingEnergy = 10000;
-	private int torpedoes = 8;
+	private int photonTorpedoesRemaining = 8;
 
     public int energyRemaining() {
         return remainingEnergy;
     }
 
-    public void setTorpedoes(int value) {
-            torpedoes = value;
+    public void setPhotonTorpedoesRemaining(int value) {
+            photonTorpedoesRemaining = value;
         }
-    public int getTorpedoes() {
-            return torpedoes;
+    public int getPhotonTorpedoesRemaining() {
+            return photonTorpedoesRemaining;
         
     }
 
@@ -52,7 +52,7 @@ public class Game {
 
 		} else if (wg.parameter("command").equals("photon")) {
 			Klingon enemy = (Klingon) wg.variable("target");
-			if (torpedoes > 0) {
+			if (photonTorpedoesRemaining > 0) {
 				int distance = enemy.distance();
 				if ((rnd(4) + ((distance / 500) + 1) > 7)) {
 					wg.writeLine("Torpedo missed Klingon at " + distance + " sectors...");
@@ -67,7 +67,7 @@ public class Game {
 						enemy.delete();
 					}
 				}
-				torpedoes -= 1;
+				photonTorpedoesRemaining -= 1;
 
 			} else {
 				wg.writeLine("No more photon torpedoes!");
