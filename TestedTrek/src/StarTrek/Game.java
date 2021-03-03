@@ -5,7 +5,7 @@ import java.util.Random;
 import Untouchables.WebGadget;
 
 public class Game {
-	private static int MAX_RANGE = 4000;
+	private static final int MAX_RANGE = 4000;
 
 	private int remainingEnergy = 10000;
 	private int photonTorpedoesRemaining = 8;
