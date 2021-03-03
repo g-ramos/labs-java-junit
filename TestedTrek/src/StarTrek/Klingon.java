@@ -27,4 +27,15 @@ public class Klingon {
 	public void delete() {
 	}
 
+	public int takeDamage(int damage) {
+		if (damage < energy)
+			energy -= damage;
+		else {
+			energy = 0;
+			delete();
+		}
+
+		return energy;
+	}
+
 }
