@@ -38,9 +38,9 @@ public class Game {
 					int damage = calculateDamage(energyCostOfCommand, distance);
 					wg.writeLine("Phasers hit Klingon at " + distance + " sectors with " + damage + " units");
 
-					int enemyEnegyLeft = enemy.takeDamage(damage);
-					if (enemyEnegyLeft > 0)
-						wg.writeLine("Klingon has " + enemyEnegyLeft + " remaining");
+					int enemyEnergyLeft = enemy.takeDamage(damage);
+					if (enemyEnergyLeft > 0)
+						wg.writeLine("Klingon has " + enemyEnergyLeft + " remaining");
 					else
 						wg.writeLine("Klingon destroyed!");
 				}
@@ -54,18 +54,16 @@ public class Game {
 			Klingon enemy = (Klingon) wg.variable("target");
 			if (photonTorpedoesRemaining > 0) {
 				int distance = enemy.distance();
-				if ((rnd(4) + ((distance / 500) + 1) > 7)) {
+				if (doesPhotonTorpedoMiss(distance)) {
 					wg.writeLine("Torpedo missed Klingon at " + distance + " sectors...");
 				} else {
 					int damage = 800 + rnd(50);
 					wg.writeLine("Photons hit Klingon at " + distance + " sectors with " + damage + " units");
-					if (damage < enemy.getEnergy()) {
-						enemy.setEnergy(enemy.getEnergy() - damage);
-						wg.writeLine("Klingon has " + enemy.getEnergy() + " remaining");
-					} else {
+					int enemyEnergyLeft = enemy.takeDamage(damage);
+					if (enemyEnergyLeft > 0)
+						wg.writeLine("Klingon has " + enemyEnergyLeft + " remaining");
+					else
 						wg.writeLine("Klingon destroyed!");
-						enemy.delete();
-					}
 				}
 				photonTorpedoesRemaining -= 1;
 
@@ -73,6 +71,11 @@ public class Game {
 				wg.writeLine("No more photon torpedoes!");
 			}
 		}
+	}
+
+	private boolean doesPhotonTorpedoMiss(int distance) {
+    	// todo figure out what the numbers mean
+		return rnd(4) + ((distance / 500) + 1) > 7;
 	}
 
 	private int calculateDamage(int energyCostOfCommand, int distance) {
