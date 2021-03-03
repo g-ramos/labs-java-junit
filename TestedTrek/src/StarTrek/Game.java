@@ -27,9 +27,9 @@ public class Game {
     }
 
     public void fireWeapon(Galaxy wg) {
-        if (wg.parameter("command").equals("phaser")) {
+		Klingon enemy = (Klingon) wg.variable("target");
+		if (wg.parameter("command").equals("phaser")) {
 			int energyCostOfCommand = Integer.parseInt(wg.parameter("amount"));
-			Klingon enemy = (Klingon) wg.variable("target");
 			if (remainingEnergy >= energyCostOfCommand) {
 				int distance = enemy.distance();
 				if (distance > Game.MAX_RANGE) {
@@ -46,7 +46,6 @@ public class Game {
 			}
 
 		} else if (wg.parameter("command").equals("photon")) {
-			Klingon enemy = (Klingon) wg.variable("target");
 			if (photonTorpedoesRemaining > 0) {
 				int distance = enemy.distance();
 				if (doesPhotonTorpedoMiss(distance)) {
