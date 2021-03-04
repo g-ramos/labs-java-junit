@@ -1,5 +1,3 @@
-package com.company;
-
 public class Shield {
 
     public final static int initStrength = 5_000;
@@ -18,5 +16,9 @@ public class Shield {
 
     public int getStrength() {
         return strength;
+    }
+
+    public void addStrength(int strength) {
+        this.strength += strength;
     }
 }
