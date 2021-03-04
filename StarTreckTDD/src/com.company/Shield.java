@@ -13,7 +13,12 @@ public class Shield {
     }
 
     public void raise() {
-        isRaised = true;
+        if (canRaise())
+            isRaised = true;
+    }
+
+    private boolean canRaise() {
+        return this.strength > 0;
     }
 
     public int getStrength() {

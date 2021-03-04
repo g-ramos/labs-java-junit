@@ -36,4 +36,14 @@ public class ShieldTest {
         Assert.assertEquals(expectedStrength , shield.getStrength());
     }
 
+    @Test
+    public void shieldIsNotEnabledWhenThereIsNoBatteryLeft() {
+        int currentShieldEnergy = shield.getStrength();
+        shield.addStrength( -currentShieldEnergy );
+
+        shield.raise();
+
+        Assert.assertFalse(shield.isRaised());
+    }
+
 }
