@@ -1,3 +1,5 @@
+package com.company;
+
 public class Shield {
 
     public final static int initStrength = 5_000;
