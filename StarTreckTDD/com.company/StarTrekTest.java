@@ -24,4 +24,10 @@ public class StarTrekTest {
         Assert.assertTrue(shield.isRaised());
     }
 
+    @Test
+    public void initialShieldStrength() {
+        Assert.assertEquals(Shield.initStrength, shield.getStrength());
+    }
+
+
 }
