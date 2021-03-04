@@ -17,4 +17,15 @@ public class Ship {
     public int getEnergy() {
         return energy;
     }
+
+    public void setEnergy(int energy) {
+        this.energy = energy;
+    }
+
+    public void transferEnergyToShield(int energy) {
+        if (energy < this.energy) {
+            this.energy -= energy;
+            getShield().addStrength(energy);
+        }
+    }
 }

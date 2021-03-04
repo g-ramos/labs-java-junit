@@ -21,4 +21,14 @@ public class ShipTest {
         Assert.assertEquals(Ship.initialEnergy, ship.getEnergy());
     }
 
+    @Test
+    public void transferMoreEnergyThanShipHas() {
+        int initStrength = ship.getShield().getStrength();
+        int initEnergy = 4000;
+        ship.setEnergy(initEnergy);
+        ship.transferEnergyToShield(initEnergy + 1);
+        Assert.assertEquals(initEnergy, ship.getEnergy());
+        Assert.assertEquals(initStrength, ship.getShield().getStrength());
+    }
+
 }
