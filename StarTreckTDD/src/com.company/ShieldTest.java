@@ -26,19 +26,19 @@ public class ShieldTest {
 
     @Test
     public void initialShieldStrength() {
-        Assert.assertEquals(Shield.initStrength, shield.getStrength());
+        Assert.assertEquals(Shield.INIT_ENERGY, shield.getEnergy());
     }
 
     @Test
     public void addStrength() {
-        int expectedStrength = Shield.initStrength + 10;
+        int expectedStrength = Shield.INIT_ENERGY + 10;
         shield.addStrength(10);
-        Assert.assertEquals(expectedStrength , shield.getStrength());
+        Assert.assertEquals(expectedStrength , shield.getEnergy());
     }
 
     @Test
     public void shieldIsNotEnabledWhenThereIsNoBatteryLeft() {
-        int currentShieldEnergy = shield.getStrength();
+        int currentShieldEnergy = shield.getEnergy();
         shield.addStrength( -currentShieldEnergy );
 
         shield.raise();

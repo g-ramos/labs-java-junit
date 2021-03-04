@@ -2,11 +2,11 @@ package com.company;
 
 public class Shield {
 
-    public final static int initStrength = 5_000;
+    public static final int INIT_ENERGY = 5_000;
 
 
     private boolean isRaised = false;
-    private int strength = initStrength;
+    private int energy = INIT_ENERGY;
 
     public boolean isRaised() {
         return isRaised;
@@ -18,14 +18,14 @@ public class Shield {
     }
 
     private boolean canRaise() {
-        return this.strength > 0;
+        return this.energy > 0;
     }
 
-    public int getStrength() {
-        return strength;
+    public int getEnergy() {
+        return energy;
     }
 
     public void addStrength(int strength) {
-        this.strength += strength;
+        this.energy += strength;
     }
 }
