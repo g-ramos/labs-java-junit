@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class StarTrekTest {
+public class ShieldTest {
 
     private Shield shield;
 
@@ -35,5 +35,5 @@ public class StarTrekTest {
         shield.addStrength(10);
         Assert.assertEquals(expectedStrength , shield.getStrength());
     }
-    
+
 }
