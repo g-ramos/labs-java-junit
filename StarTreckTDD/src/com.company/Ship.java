@@ -26,6 +26,7 @@ public class Ship {
         if (energy < this.energy) {
             this.energy -= energy;
             this.energy += getShield().addEnergy(energy);
+
         }
     }
 }

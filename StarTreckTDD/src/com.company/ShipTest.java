@@ -67,5 +67,13 @@ public class ShipTest {
         Assert.assertEquals(expectedShipEnergy, ship.getEnergy());
     }
 
+    @Test
+    public void transferMoreEnergyBackThanShieldHas() {
+        ship.setEnergy(50_000);
+        ship.transferEnergyToShield(-6000);
+
+        Assert.assertEquals(0 ,ship.getShield().getEnergy());
+        Assert.assertEquals(55000, ship.getEnergy());
+    }
 
 }

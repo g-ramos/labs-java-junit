@@ -33,6 +33,10 @@ public class Shield {
             this.energy = MAX_ENERGY;
 
             return extraEnergy;
+        } else if (this.energy < 0) {
+            int tempEnergy = this.energy;
+            this.energy = 0;
+            return tempEnergy;
         }
 
         return 0;
