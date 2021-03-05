@@ -32,14 +32,14 @@ public class ShieldTest {
     @Test
     public void addStrength() {
         int expectedStrength = Shield.INIT_ENERGY + 10;
-        shield.addStrength(10);
+        shield.addEnergy(10);
         Assert.assertEquals(expectedStrength , shield.getEnergy());
     }
 
     @Test
     public void shieldIsNotEnabledWhenThereIsNoBatteryLeft() {
         int currentShieldEnergy = shield.getEnergy();
-        shield.addStrength( -currentShieldEnergy );
+        shield.addEnergy( -currentShieldEnergy );
 
         shield.raise();
 

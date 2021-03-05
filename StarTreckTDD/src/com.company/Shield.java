@@ -3,7 +3,7 @@ package com.company;
 public class Shield {
 
     public static final int INIT_ENERGY = 5_000;
-
+    public static final int MAX_ENERGY = 10_000;
 
     private boolean isRaised = false;
     private int energy = INIT_ENERGY;
@@ -25,7 +25,16 @@ public class Shield {
         return energy;
     }
 
-    public void addStrength(int strength) {
+    public int addEnergy(int strength) {
         this.energy += strength;
+        if(this.energy > MAX_ENERGY)
+        {
+            int extraEnergy = this.energy - MAX_ENERGY;
+            this.energy = MAX_ENERGY;
+
+            return extraEnergy;
+        }
+
+        return 0;
     }
 }
