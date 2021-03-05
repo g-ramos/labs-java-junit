@@ -57,4 +57,15 @@ public class ShipTest {
         Assert.assertEquals(initialShipEnergy - energyRequestedToTransfer + energyOverCapacity, ship.getEnergy());
     }
 
+    @Test
+    public void transferEnergyFromShieldToShip() {
+        ship.setEnergy(50_000);
+        ship.transferEnergyToShield(-1000);
+        int expectedShieldEnergy = Shield.INIT_ENERGY - 1000;
+        int expectedShipEnergy = 50_000 + 1000;
+        Assert.assertEquals(expectedShieldEnergy, ship.getShield().getEnergy());
+        Assert.assertEquals(expectedShipEnergy, ship.getEnergy());
+    }
+
+
 }
